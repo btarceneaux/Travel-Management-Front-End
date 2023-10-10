@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Customers</title>
+</head>
+<body>
+    <h2 class="mb-3">All Customers</h2>
+
+    <div class="container-fluid col-sm-10">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+                <tr *ngFor="let customer of customerArray">
+                    <td>{{customer.customerId}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.lastName}}</td>
+                    <td>{{customer.emailAddress}}</td>
+                    <td><button (click)="deleteCustomer(customer.customerId!)">Delete</button></td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <br>
+    <div class="container-fluid col-sm-10">
+        <nav aria-label="...">
+            <ul class="pagination">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                  </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+            </ul>
+        </nav>
+    </div>
+</body>
+</html>

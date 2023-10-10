@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking </title>
+</head>
+<body>
+    <h2 class="mb-3">Book A Cab</h2>
+    <div class="container">
+        <form action="">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="emailAddress" class="form-label">Please Select A User</label><br>
+                    <!-- <input id="emailAddress" type="text" class="form-control" tabindex="1"> -->
+                    <select class="form-select" id="emailAddress">
+                        <option *ngFor="let customer of customerArray" [value]="customer.emailAddress">
+                            {{customer.firstName}} {{customer.lastName}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label for="date" class="form-label">Date</label>
+                    <input id="date" class="form-control" type="date" placeholder="Today" tabindex="2">
+                </div>
+                <div class="col-sm-4">
+                    <label for="time" class="form-label">Time</label>
+                    <input id="time" class="form-control" type="time" placeholder="8:00" tabindex="3">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="sourceStreetAddress" class="form-label">Source Address</label>
+                    <input id="sourceStreetAddress" class="form-control" type="text" placeholder="111 Main Street" tabindex="4">
+                </div>
+                <div class="col-sm-6">
+                    <label for="destinationStreetAddress" class="form-label">Destination Address</label>
+                    <input id="destinationStreetAddress" class="form-control" type="text" placeholder="123 5th Street" tabindex="8">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="sourceCity" class="form-label">Source City</label>
+                    <input id="sourceCity" class="form-control" type="text" placeholder="Bridgeport" tabindex="5">
+                </div>
+                <div class="col-sm-6">
+                    <label for="destinationCity" class="form-label">Destination City</label>
+                    <input id="destinationCity" class="form-control" type="text" placeholder="Bridgeport" tabindex="9">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="sourceState" class="form-label">Source State</label>
+                    <input id="sourceState" class="form-control" type="text" placeholder="Connecticut" tabindex="6">
+                </div>
+                <div class="col-sm-6">
+                    <label for="destinationState" class="form-label">Destination State</label>
+                    <input id="destinationState" class="form-control" type="text" placeholder="Connecticut" tabindex="10">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-6">
+                    <label for="sourceZipCode" class="form-label">Source Zip Code</label>
+                    <input id="sourceZipCode" class="form-control" type="text" placeholder="12345" tabindex="7">
+                </div>
+                <div class="col-sm-6">
+                    <label for="destinationZipCode" class="form-label">Destination Zip Code</label>
+                    <input id="destinationZipCode" class="form-control" type="text" placeholder="12345" tabindex="11">
+                </div>
+            </div>
+            <br>
+            <div class=".text-center">
+                <button type="submit" class="btn btn-primary" tabindex="12">Submit</button>
+            </div>            
+        </form>
+    </div>
+</body>
+</html>
