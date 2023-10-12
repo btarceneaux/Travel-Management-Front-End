@@ -18,6 +18,7 @@
                     <th scope="col">Email Address</th>
                     <th scope="col">Action</th>
                 </tr>
+            </thead>
                 <tr *ngFor="let customer of customerArray">
                     <td>{{customer.customerId}}</td>
                     <td>{{customer.firstName}}</td>
@@ -25,7 +26,6 @@
                     <td>{{customer.emailAddress}}</td>
                     <td><button (click)="deleteCustomer(customer.customerId!)">Delete</button></td>
                 </tr>
-            </thead>
         </table>
     </div>
     <br>

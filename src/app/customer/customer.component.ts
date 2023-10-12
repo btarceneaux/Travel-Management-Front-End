@@ -4,13 +4,6 @@ import { CustomerService } from '../services/customer.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, NgForm } from '@angular/forms';
 
-
-interface StateInterface
-{
-  name:String;
-  abbreviation:String;
-}
-
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',

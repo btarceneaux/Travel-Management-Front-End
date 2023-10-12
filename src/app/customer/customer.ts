@@ -1,6 +1,6 @@
 export class Customer
 {
-    customerId = null;
+    customerId:number = 0;
     firstName:string;
     lastName:string;
     emailAddress:string;
@@ -10,5 +10,10 @@ export class Customer
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailAddress = emailAddress;
+    }
+
+    setId(id:number)
+    {
+        this.customerId = id;
     }
 }

@@ -1,1 +1,32 @@
-<p>view-bookings works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+</head>
+<body>
+    <div class="container-fluid col-sm-10">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Passengers</th>
+                    <th scope="col">Customer Id</th>
+                    <th scope="col">Source Address</th>
+                    <th scope="col">Destination Address</th>
+                </tr>
+            </thead>
+            <tr *ngFor="let booking of bookingArray">
+                <td>{{booking.bookingDateAndTime | date}}</td>
+                <td>{{booking.bookingDateAndTime | date:'shortTime'}}</td>
+                <td>{{booking.numberOfPassengers}}</td>
+                <td>{{booking.relatedCustomer.customerId}}</td>
+                <td>{{booking.sourceAddress}}</td>
+                <td>{{booking.destinationAddress}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
