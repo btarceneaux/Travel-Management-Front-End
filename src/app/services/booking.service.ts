@@ -22,10 +22,16 @@ export class BookingService {
     return this.http.post<Response>(api, booking, {responseType:'json'});
   }
 
-  getAllBookings():Observable<Booking[]>
+  getAllBookings(pageNumber:number = 1, pageSize:number = 1):Observable<Booking[]>
   {
     let api = this.baseurl + "/bookings";
-    return this.http.get<Booking[]>(api, {responseType:'json', params: new HttpParams().set('page',0)
-    .set('size', 10).set('sort', 'bookingId').set('sortOrder', 'ASC')})
+    return this.http.get<Booking[]>(api, {responseType:'json', params: new HttpParams().set('page',pageNumber-1)
+    .set('size', pageSize).set('sort', 'bookingId').set('sortOrder', 'ASC')})
+  }
+
+  deleteBooking(bookingId:String):Observable<Response>
+  {
+    let api = this.baseurl + "/deleteBooking/" + bookingId;
+    return this.http.delete<Response>(api);
   }
 }

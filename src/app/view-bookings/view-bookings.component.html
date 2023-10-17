@@ -7,6 +7,14 @@
 </head>
 <body>
     <div class="container-fluid col-sm-10">
+        <div class="tableItemAmount"><label for="">Show &nbsp;</label>
+            <select #numberPerPage (change)="selectedNumbersPerPage(numberPerPage.value)">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+            </select>
+        </div>
+        <br>
         <table class="table table-primary">
             <thead>
                 <tr>
@@ -16,6 +24,8 @@
                     <th scope="col">Customer Id</th>
                     <th scope="col">Source Address</th>
                     <th scope="col">Destination Address</th>
+                    <th scope="col">Total Cost</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tr *ngFor="let booking of bookingArray">
@@ -23,10 +33,78 @@
                 <td>{{booking.bookingDateAndTime | date:'shortTime'}}</td>
                 <td>{{booking.numberOfPassengers}}</td>
                 <td>{{booking.relatedCustomer.customerId}}</td>
-                <td>{{booking.sourceAddress}}</td>
-                <td>{{booking.destinationAddress}}</td>
+                <td>
+                     <!-- Modal -->
+                    <div class="modal fade" id="sourceAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Source Address Details</h1>
+                            <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {{booking.sourceAddress.streetAddress}}
+                                <br>
+                                {{booking.sourceAddress.city}}
+                                <br>
+                                {{booking.sourceAddress.state}} {{booking.sourceAddress.zipCode}}
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#sourceAddressModal">
+                        View Details
+                    </button>
+                </td>
+                <td>
+                    <!-- Modal -->
+                    <div class="modal fade" id="destinationAddressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Destination Address Details</h1>
+                            <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {{booking.destinationAddress.streetAddress}}
+                                <br>
+                                {{booking.destinationAddress.city}}
+                                <br>
+                                {{booking.destinationAddress.state}} {{booking.destinationAddress.zipCode}}
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" (click)="closeModal()" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" (click)="openModal()" data-bs-toggle="modal" data-bs-target="#destinationAddressModal">
+                        View Details
+                    </button>
+                </td>
+                <td>
+                    $ {{booking.cost}}
+                </td>
+                <td>
+                    <button class="btn btn-secondary" (click)="deleteBookingRecord(booking.bookingId!)">Delete Booking</button>
+                </td>
             </tr>
         </table>
     </div>
+    <div class="container-fluid col-sm-10" style="float-left;text-align:left">
+        <div class="paginations">
+            <div>
+                <div class="btn-group" id="radioBtn" >
+                    <a class="btn btn-primary btn-sm notActive" (click)="onPrevious()">Previous</a>
+                    <a class="btn btn-primary btn-sm notActive">{{pageFilterObject.pageNumber}}</a>
+                    <a class="btn btn-primary btn-sm notActive"  (click)="onNext()">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>

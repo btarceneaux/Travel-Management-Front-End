@@ -18,12 +18,12 @@ export class CustomerService {
 
   customer:Customer[] = [];
 
-  getAllCustomers():Observable<Customer[]>
+  getAllCustomers(pageNumber:number = 1, pageSize:number = 1):Observable<Customer[]>
   {
     let api = this.baseurl + "/customer";
 
-    return this.http.get<Customer[]>(api, {responseType:'json', params: new HttpParams().set('page',0)
-    .set('size', 10).set('sort','lastName').set('sortOrder','ASC')})
+    return this.http.get<Customer[]>(api, {responseType:'json', params: new HttpParams().set('page',pageNumber -1)
+    .set('size', pageSize).set('sort','lastName').set('sortOrder','ASC')})
   } 
 
   createCustomer(customer:Customer):Observable<Response>

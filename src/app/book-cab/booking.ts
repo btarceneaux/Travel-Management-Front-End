@@ -9,6 +9,7 @@ export class Booking
     relatedCustomer:Customer;
     sourceAddress:Address;
     destinationAddress:Address;
+    cost = 0;
 
     constructor(bookingDateAndTime:Date, numberOfPassengers:number, 
         relatedCustomer:Customer, sourceAddress:Address, destinationAddress:Address)

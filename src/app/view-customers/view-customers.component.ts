@@ -12,10 +12,36 @@ import { Router } from '@angular/router';
 })
 export class ViewCustomersComponent implements OnInit
 {
-  currentPage: number = 1;
+
+  selectedNumbersPerPage(value:string) 
+  {
+   this.pageFilterObject.pageSize = parseInt(value) ;
+   this.getAllCustomers();
+  }
+
+  onPrevious()
+  {
+    if(this.pageFilterObject.pageNumber > 1)
+    {
+      this.pageFilterObject.pageNumber--;
+      this.getAllCustomers();
+    }
+  }
+
+  onNext()
+  {
+    this.pageFilterObject.pageNumber++;
+    this.getAllCustomers();
+  }
+  
   customerArray:Customer[] = [];
   response:Response | undefined;
-  i: number = 0;
+
+  pageFilterObject =
+  {
+    "pageNumber":1,
+    "pageSize": 5
+  }
 
   ngOnInit(): void 
   {
@@ -48,7 +74,7 @@ export class ViewCustomersComponent implements OnInit
 
   getAllCustomers()
   {
-    this.customerService.getAllCustomers().subscribe(result =>
+    this.customerService.getAllCustomers(this.pageFilterObject.pageNumber, this.pageFilterObject.pageSize).subscribe(result =>
       {
         this.customerArray = result;
       },

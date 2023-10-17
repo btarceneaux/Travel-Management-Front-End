@@ -48,7 +48,7 @@ export class BookCabComponent implements OnInit
 
   getAllCustomers()
   {
-    this.customerService.getAllCustomers().subscribe(result =>
+    this.customerService.getAllCustomers(1, 10).subscribe(result =>
       {
         this.customerArray = result;
       },
