@@ -39,7 +39,7 @@ pipeline
                      else \
                     echo OK; \
                  fi;);
-                docker container run --network ecom-webapp-network --restart always --name travel-management-frontend-container -p 4000:80 -d travel-management-frontend
+                docker container run --network travel-management-network --restart always --name travel-management-frontend-container -p 4000:80 -d travel-management-frontend
             '''
             }
         }
